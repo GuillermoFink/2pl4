@@ -30,6 +30,13 @@ export class MiHttpService {
       .then(this.extractData)
       .catch(this.handleError);
   }
+  public httpPostLogin(url: string, objeto: any){
+    return this.http
+      .post(this.ruta + url, objeto)
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
 
 
   private extractData(res: Response) {
