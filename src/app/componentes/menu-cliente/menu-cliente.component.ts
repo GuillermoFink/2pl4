@@ -19,7 +19,7 @@ export class MenuClienteComponent implements OnInit {
         label: 'Turnos',
         icon: 'fa fa-plus',
         items: [
-          { label: 'Solicitar Turno', icon: 'fa fa-plus', command: (click) => { this.miRoute.navigate(['/cliente/turnos']) } },
+          { label: 'Solicitar Turno', icon: 'fa fa-plus', command: (click) => { this.miRoute.navigate(['/cliente/soliTurno']) } },
           { label: 'Mis Turnos', icon: 'fa fa-sticky-note', command: (click) => { this.miRoute.navigate(['/cliente/turnos']) } },
         ]
       },

@@ -1,0 +1,17 @@
+<div class="ui-g">
+  <div class="ui-g-6">
+    <app-tabla-mis-mascotas [id_usuario]="id_usuario"></app-tabla-mis-mascotas>
+  </div>
+  <div class="ui-g-6">
+    
+      <p-calendar [(ngModel)]="date1" [showTime]="true"
+      [locale]="es" dateFormat="dd/mm/yy"
+      tabindex="0" [disabledDates]="invalidDates" [disabledDays]="[0,6]" readonlyInput="true"
+      [monthNavigator]="true" [yearNavigator]="true" yearRange="2018:2030"
+      showButtonBar="true" [inline]="true"></p-calendar> {{date7}}
+    
+  </div>
+  <div class="ui-g-12">
+    DATOS DE LA MASCOTA
+  </div>
+</div>

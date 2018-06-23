@@ -75,4 +75,11 @@ export class MascotaService {
       return data;
     })
   }
+  traerMascotaPorId(data): Promise<any> {
+    return this.miHttp.httpPostP('traerMascotaPorId', data)
+    .then (data => {
+      console.log(data);
+      return data;
+    })
+  }
 }

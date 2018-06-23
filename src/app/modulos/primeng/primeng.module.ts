@@ -21,7 +21,7 @@ import {ToggleButtonModule} from 'primeng/togglebutton';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ChipsModule} from 'primeng/chips';
-
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   imports: [
@@ -45,7 +45,8 @@ import {ChipsModule} from 'primeng/chips';
     ToggleButtonModule,
     InputTextModule,
     CheckboxModule,
-    ChipsModule
+    ChipsModule,
+    CalendarModule
     
   ],
   exports: [
@@ -69,7 +70,8 @@ import {ChipsModule} from 'primeng/chips';
     ToggleButtonModule,
     InputTextModule,
     CheckboxModule,
-    ChipsModule
+    ChipsModule,
+    CalendarModule
   ],
   declarations: []
 })

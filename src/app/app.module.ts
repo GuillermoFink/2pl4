@@ -32,6 +32,8 @@ import { MisMascotasComponent } from './componentes/mis-mascotas/mis-mascotas.co
 import { MisturnosComponent } from './componentes/misturnos/misturnos.component';
 import { AltaMascotaComponent } from './componentes/alta-mascota/alta-mascota.component';
 import { EdadPipePipe } from './pipe/edad-pipe.pipe';
+import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar-turno.component';
+import { TablaMisMascotasComponent } from './componentes/tabla-mis-mascotas/tabla-mis-mascotas.component';
 
 
 const config: Routes = [
@@ -62,6 +64,10 @@ const config: Routes = [
       {
         path: 'altaMascota',
         component: AltaMascotaComponent
+      },
+      {
+        path: 'soliTurno',
+        component: SolicitarTurnoComponent
       }
     ]
   },
@@ -92,7 +98,9 @@ const config: Routes = [
     MisMascotasComponent,
     MisturnosComponent,
     AltaMascotaComponent,
-    EdadPipePipe
+    EdadPipePipe,
+    SolicitarTurnoComponent,
+    TablaMisMascotasComponent
   ],
   imports: [
     BrowserModule,
