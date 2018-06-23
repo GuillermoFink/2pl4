@@ -31,6 +31,7 @@ import { MenuClienteComponent } from './componentes/menu-cliente/menu-cliente.co
 import { MisMascotasComponent } from './componentes/mis-mascotas/mis-mascotas.component';
 import { MisturnosComponent } from './componentes/misturnos/misturnos.component';
 import { AltaMascotaComponent } from './componentes/alta-mascota/alta-mascota.component';
+import { EdadPipePipe } from './pipe/edad-pipe.pipe';
 
 
 const config: Routes = [
@@ -90,7 +91,8 @@ const config: Routes = [
     MenuClienteComponent,
     MisMascotasComponent,
     MisturnosComponent,
-    AltaMascotaComponent
+    AltaMascotaComponent,
+    EdadPipePipe
   ],
   imports: [
     BrowserModule,
