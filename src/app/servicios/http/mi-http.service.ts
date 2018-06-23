@@ -10,9 +10,10 @@ export class MiHttpService {
 
   ruta: string = 'http://localhost/api2pl4/';
 
+
   public httpGetP(url: string) {
-    let headers = new Headers({token: localStorage.getItem('token') });
-    let options = new RequestOptions( {'headers': headers} ) ;
+    let headers = new Headers({ token: localStorage.getItem('token') });
+    let options = new RequestOptions({ 'headers': headers });
     return this.http
       .get(this.ruta + url, options)
       .toPromise()
@@ -20,19 +21,11 @@ export class MiHttpService {
       .catch(this.handleError);
   }
 
-
   public httpPostP(url: string, objeto: any) {
-    let headers = new Headers({token: localStorage.getItem('token') });
-    let options = new RequestOptions( {'headers': headers} ) ;
+    let headers = new Headers({ token: localStorage.getItem('token') });
+    let options = new RequestOptions({ 'headers': headers });
     return this.http
       .post(this.ruta + url, objeto, options)
-      .toPromise()
-      .then(this.extractData)
-      .catch(this.handleError);
-  }
-  public httpPostLogin(url: string, objeto: any){
-    return this.http
-      .post(this.ruta + url, objeto)
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);

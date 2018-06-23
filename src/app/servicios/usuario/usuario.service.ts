@@ -68,15 +68,4 @@ export class UsuarioService {
       return data;
     })
   }
-  loginUsuario(data): Promise<any>{
-    return this.miHttp.httpPostLogin('login', data)
-    .then (data => {
-      localStorage.setItem('token', data);
-      //let payload = data.split('.')[1];
-      //let pay2 = payload.replace('-','+').replace('_','/');
-      //let datos = JSON.parse(atob(pay2));
-      console.log(data);
-      //return data;
-    })
-  }
 }

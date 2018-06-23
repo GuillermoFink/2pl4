@@ -9,6 +9,10 @@ import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms'
 import { Usuario } from './clases/usuario';
 import { Mascota } from './clases/mascota';
 
+// MODULO DE PRIMENG
+import { PrimengModule } from './modulos/primeng/primeng.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 // SERVICIOS PROPIOS
 import { UsuarioService } from './servicios/usuario/usuario.service';
 import { MascotaService } from './servicios/mascota/mascota.service';
@@ -19,6 +23,9 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+import { ClienteComponent } from './componentes/cliente/cliente.component';
+import { RegistroUsuarioComponent } from './componentes/registro-usuario/registro-usuario.component';
 
 
 const config: Routes = [
@@ -27,8 +34,28 @@ const config: Routes = [
     component: LoginComponent
   },
   {
+    path: '*',
+    component: LoginComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'cliente',
+    component: ClienteComponent
+  },
+  {
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+  },
+  {
+    path: 'registro',
+    component: RegistroUsuarioComponent
   }
 ];
 
@@ -36,17 +63,22 @@ const config: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    ClienteComponent,
+    RegistroUsuarioComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    PrimengModule,
+    AngularFontAwesomeModule,
     HttpModule,
     RouterModule.forRoot(config)
   ],
-  providers: [Usuario, Mascota, MiHttpService, UsuarioService,MascotaService],
+  providers: [Usuario, Mascota, MiHttpService, UsuarioService, MascotaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
