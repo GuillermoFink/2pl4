@@ -26,6 +26,11 @@ import { HomeComponent } from './componentes/home/home.component';
 import { AdminComponent } from './componentes/admin/admin.component';
 import { ClienteComponent } from './componentes/cliente/cliente.component';
 import { RegistroUsuarioComponent } from './componentes/registro-usuario/registro-usuario.component';
+import { MenuComponent } from './componentes/menu/menu.component';
+import { MenuClienteComponent } from './componentes/menu-cliente/menu-cliente.component';
+import { MisMascotasComponent } from './componentes/mis-mascotas/mis-mascotas.component';
+import { MisturnosComponent } from './componentes/misturnos/misturnos.component';
+import { AltaMascotaComponent } from './componentes/alta-mascota/alta-mascota.component';
 
 
 const config: Routes = [
@@ -43,7 +48,21 @@ const config: Routes = [
   },
   {
     path: 'cliente',
-    component: ClienteComponent
+    component: ClienteComponent,
+    children: [
+      {
+        path: 'mascotas',
+        component: MisMascotasComponent
+      },
+      {
+        path: 'turnos',
+        component: MisturnosComponent
+      },
+      {
+        path: 'altaMascota',
+        component: AltaMascotaComponent
+      }
+    ]
   },
   {
     path: 'admin',
@@ -66,7 +85,12 @@ const config: Routes = [
     HomeComponent,
     AdminComponent,
     ClienteComponent,
-    RegistroUsuarioComponent
+    RegistroUsuarioComponent,
+    MenuComponent,
+    MenuClienteComponent,
+    MisMascotasComponent,
+    MisturnosComponent,
+    AltaMascotaComponent
   ],
   imports: [
     BrowserModule,

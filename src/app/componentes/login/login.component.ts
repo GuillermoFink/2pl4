@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
             }
           })
           if (this.miServicioUsuario.getTipoUsuario() == 10) {
-            this.miRoute.navigate(['/home']);
+            this.miRoute.navigate(['/admin']);
           } else {
             this.miRoute.navigate(['/cliente']);
           }
