@@ -8,6 +8,7 @@ import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms'
 // CLASES UTILIZADAS
 import { Usuario } from './clases/usuario';
 import { Mascota } from './clases/mascota';
+import { Turno } from './clases/turno';
 
 // MODULO DE PRIMENG
 import { PrimengModule } from './modulos/primeng/primeng.module';
@@ -16,6 +17,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 // SERVICIOS PROPIOS
 import { UsuarioService } from './servicios/usuario/usuario.service';
 import { MascotaService } from './servicios/mascota/mascota.service';
+import { TurnoService } from './servicios/turno/turno.service';
 import { MiHttpService } from './servicios/http/mi-http.service';
 import { HttpModule } from '@angular/http';
 
@@ -34,6 +36,7 @@ import { AltaMascotaComponent } from './componentes/alta-mascota/alta-mascota.co
 import { EdadPipePipe } from './pipe/edad-pipe.pipe';
 import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar-turno.component';
 import { TablaMisMascotasComponent } from './componentes/tabla-mis-mascotas/tabla-mis-mascotas.component';
+import { DescTurnoPipe } from './pipe/desc-turno.pipe';
 
 
 const config: Routes = [
@@ -100,7 +103,8 @@ const config: Routes = [
     AltaMascotaComponent,
     EdadPipePipe,
     SolicitarTurnoComponent,
-    TablaMisMascotasComponent
+    TablaMisMascotasComponent,
+    DescTurnoPipe
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,7 @@ const config: Routes = [
     HttpModule,
     RouterModule.forRoot(config)
   ],
-  providers: [Usuario, Mascota, MiHttpService, UsuarioService, MascotaService],
+  providers: [Usuario, Mascota, Turno,MiHttpService, UsuarioService, MascotaService,TurnoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

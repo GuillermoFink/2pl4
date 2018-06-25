@@ -1,10 +1,14 @@
-import { Component, OnInit, Input,Output } from '@angular/core';
+import { Component, OnInit, Input, Output, SimpleChanges } from '@angular/core';
 import { Mascota } from '../../clases/mascota';
+import { Usuario } from '../../clases/usuario';
+import { Turno } from '../../clases/turno';
+import { TurnoService } from '../../servicios/turno/turno.service';
 import { MascotaService } from '../../servicios/mascota/mascota.service';
 import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { MiHttpService } from '../../servicios/http/mi-http.service';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-solicitar-turno',
@@ -13,12 +17,19 @@ import { SelectItem } from 'primeng/api';
 })
 export class SolicitarTurnoComponent implements OnInit {
   id_usuario: any;
-  constructor(private miMascota: Mascota, private miHttp: MiHttpService, private miRouter: Router, private miServicioMascota: MascotaService, private miUsuario: UsuarioService) {
+  constructor(private miMascota: Mascota, private miHttp: MiHttpService, private miRouter: Router, private miServicioMascota: MascotaService, private miUsuario: UsuarioService, private usuario: Usuario, private miTurno: Turno, private ServicioTurno: TurnoService) {
     this.id_usuario = { id_usuario: this.miUsuario.getIdUsuario() };
   }
   date1: Date;
   es: any;
-  invalidDates: Array<Date>
+  invalidDates: Array<Date>;
+  confirmarTurno: boolean = false;
+  nombreUsuario: string = this.miUsuario.getNombreUsuario();
+  apellidoUsuario: string = this.miUsuario.getApellidoUsuario();
+  idUsuario: number = this.miUsuario.getIdUsuario();
+  desc: string;
+  cantChar: number = 200;
+
   ngOnInit() {
     this.es = {
       firstDayOfWeek: 1,
@@ -31,7 +42,7 @@ export class SolicitarTurnoComponent implements OnInit {
       clear: 'Borrar'
     }
 
-    
+
     let today = new Date();
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -39,15 +50,69 @@ export class SolicitarTurnoComponent implements OnInit {
     let prevYear = (prevMonth === 11) ? year - 1 : year;
     let nextMonth = (month === 11) ? 0 : month + 1;
     let nextYear = (nextMonth === 0) ? year + 1 : year;
-    
+
 
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
   }
-  mascotaElegida(algo){
+
+  mascotaElegida(mascotaElegida) {
     console.log("CAPTURO POR OUTPUT");
-    console.log(algo);
+    this.confirmarTurno = true;
+    this.miMascota = mascotaElegida;
+    console.log(this.miMascota);
   }
+  test() {
+    console.log(this.desc);
+  }
+  canCaracteres() {
+    this.cantChar = 200 - this.desc.length;
+    if (this.cantChar < 0) {
+      this.cantChar = 0;
+    }
+  }
+
+  altaTurno() {
+    let dia: Date = new Date();
+    console.log(dia);
+    console.log(this.date1);
+    if (this.date1 < dia) {
+      swal({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Por favor seleccionar una fecha válida'
+      })
+    } else {
+      if (this.desc == null) {
+        this.miTurno.descripcion = " ";
+      }else{
+        this.miTurno.descripcion = this.desc;
+      }
+      this.miTurno.estado = 1;
+      this.miTurno.fecha = this.date1;
+      this.miTurno.id_mascota = this.miMascota.id;
+      this.ServicioTurno.agregarTurno(this.miTurno)
+        .then(data => {
+          console.log(data);
+          if (data == "ok") {
+            swal({
+              type: 'success',
+              title: '=)',
+              text: 'Turno creado exitosamente'
+            })
+            this.miRouter.navigate(['/cliente/turnos']);
+          } else {
+            swal({
+              type: 'error',
+              title: '>(',
+              text: 'Error al crear el turno'
+            })
+          }
+        });
+    }
+
+  }
+
 
 }
