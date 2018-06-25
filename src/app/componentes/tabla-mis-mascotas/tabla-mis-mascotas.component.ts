@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 import swal from 'sweetalert2';
 import { Mascota } from '../../clases/mascota';
 import { MascotaService } from '../../servicios/mascota/mascota.service';
@@ -6,6 +6,7 @@ import { UsuarioService } from '../../servicios/usuario/usuario.service';
 import { MiHttpService } from '../../servicios/http/mi-http.service';
 import { Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+
 
 
 
@@ -26,6 +27,7 @@ export class TablaMisMascotasComponent implements OnInit {
   mascotaSeleccionada: Mascota;
 
   @Input() id_usuario: any;
+  @Output() seleccion = new EventEmitter<any>();
 
   constructor(private miMascota: Mascota, private miHttp: MiHttpService, private miRouter: Router, private miServicioMascota: MascotaService, private miUsuario: UsuarioService) { }
 
@@ -44,9 +46,7 @@ export class TablaMisMascotasComponent implements OnInit {
   }
 
   onRowSelect(event) {
-    this.miServicioMascota.traerMascotaPorId(this.mascotaSeleccionada.id).then(data =>{
-      console.log(this.mascotaSeleccionada);
-    })
+    this.seleccion.emit(this.mascotaSeleccionada);
     //this.miServicioMascota.traer(this.vehiculoSeleccionado.id_chofer).then(data => {
      // this.unChofer = data[0];
     //});

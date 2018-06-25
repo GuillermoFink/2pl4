@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,Output } from '@angular/core';
 import { Mascota } from '../../clases/mascota';
 import { MascotaService } from '../../servicios/mascota/mascota.service';
 import { UsuarioService } from '../../servicios/usuario/usuario.service';
@@ -44,6 +44,10 @@ export class SolicitarTurnoComponent implements OnInit {
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
     this.invalidDates = [today, invalidDate];
+  }
+  mascotaElegida(algo){
+    console.log("CAPTURO POR OUTPUT");
+    console.log(algo);
   }
 
 }
