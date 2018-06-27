@@ -59,4 +59,18 @@ export class TurnoService {
       return data;
     })
   }
+  traerTodosLosTurnos(): Promise<any>{
+    return this.miHttp.httpGetP('traerTodosLosTurnos')
+    .then(data => {
+      console.log(data);
+      return data;
+    })
+  }
+  actualizarTurno(data): Promise<any>{
+    return this.miHttp.httpPostP('actualizarTurno', data)
+    .then(data => {
+      console.log(data);
+      return data;
+    })
+  }
 }

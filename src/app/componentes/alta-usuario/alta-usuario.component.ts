@@ -45,9 +45,9 @@ export class AltaUsuarioComponent implements OnInit {
             swal({
               type: 'success',
               title: 'OK',
-              text: 'Por favor iniciar sesión',
+              text: 'Usuario creado correctamente!!',
             })
-            this.miRouter.navigate(['/login']);
+            this.miRouter.navigate(['/admin/verUsuarios'])
           }
         })
     } else {

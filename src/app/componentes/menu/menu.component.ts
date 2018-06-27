@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
         label: 'Turnos',
         icon: 'fa fa-check',
         items: [
-          {label: 'Ver turnos', icon: 'fa fa-check'}
+          {label: 'Ver turnos', icon: 'fa fa-check', command: (click) => { this.miRoute.navigate(['/admin/verTurnos'])}}
         ]
       },
       {
