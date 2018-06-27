@@ -5,6 +5,9 @@
       (onRowSelect)="onRowSelect($event)">
 
       <ng-template pTemplate="caption">
+          <div style="text-align: left">
+              <button type="button" pButton icon="far fa-file-excel" iconPos="left" label="Exportar" (click)="dt.exportCSV()" style="float:left"></button>
+          </div>
         <div style="text-align: right">
           <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
           <input type="text" pInputText size="20" placeholder="Filtro Global" (input)="dt.filterGlobal($event.target.value, 'contains')"

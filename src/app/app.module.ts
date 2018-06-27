@@ -41,6 +41,7 @@ import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.co
 import { VerUsuariosComponent } from './componentes/ver-usuarios/ver-usuarios.component';
 import { TipoUsuarioPipe } from './pipe/tipo-usuario.pipe';
 import { VerTurnosComponent } from './componentes/ver-turnos/ver-turnos.component';
+import { VerMascotasComponent } from './componentes/ver-mascotas/ver-mascotas.component';
 
 
 const config: Routes = [
@@ -93,6 +94,10 @@ const config: Routes = [
       {
         path:'verTurnos',
         component: VerTurnosComponent
+      },
+      {
+        path:'verMascotas',
+        component: VerMascotasComponent
       }
     ]
   },
@@ -126,7 +131,8 @@ const config: Routes = [
     AltaUsuarioComponent,
     VerUsuariosComponent,
     TipoUsuarioPipe,
-    VerTurnosComponent
+    VerTurnosComponent,
+    VerMascotasComponent
   ],
   imports: [
     BrowserModule,

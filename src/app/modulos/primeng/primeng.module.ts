@@ -24,6 +24,7 @@ import {ChipsModule} from 'primeng/chips';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {DialogModule} from 'primeng/dialog';
+import {SliderModule} from 'primeng/slider';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import {DialogModule} from 'primeng/dialog';
     ChipsModule,
     CalendarModule,
     InputTextareaModule,
-    DialogModule
+    DialogModule,
+    SliderModule
     
   ],
   exports: [
@@ -77,7 +79,8 @@ import {DialogModule} from 'primeng/dialog';
     ChipsModule,
     CalendarModule,
     InputTextareaModule,
-    DialogModule
+    DialogModule,
+    SliderModule
   ],
   declarations: []
 })
