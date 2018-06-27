@@ -37,6 +37,9 @@ import { EdadPipePipe } from './pipe/edad-pipe.pipe';
 import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar-turno.component';
 import { TablaMisMascotasComponent } from './componentes/tabla-mis-mascotas/tabla-mis-mascotas.component';
 import { DescTurnoPipe } from './pipe/desc-turno.pipe';
+import { AltaUsuarioComponent } from './componentes/alta-usuario/alta-usuario.component';
+import { VerUsuariosComponent } from './componentes/ver-usuarios/ver-usuarios.component';
+import { TipoUsuarioPipe } from './pipe/tipo-usuario.pipe';
 
 
 const config: Routes = [
@@ -76,7 +79,17 @@ const config: Routes = [
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    children: [
+      {
+        path: 'altaUsuario',
+        component: AltaUsuarioComponent
+      },
+      {
+        path: 'verUsuarios',
+        component: VerUsuariosComponent
+      }
+    ]
   },
   {
     path: 'home',
@@ -104,7 +117,10 @@ const config: Routes = [
     EdadPipePipe,
     SolicitarTurnoComponent,
     TablaMisMascotasComponent,
-    DescTurnoPipe
+    DescTurnoPipe,
+    AltaUsuarioComponent,
+    VerUsuariosComponent,
+    TipoUsuarioPipe
   ],
   imports: [
     BrowserModule,

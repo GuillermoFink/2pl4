@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,21 +10,32 @@ import {MenuItem} from 'primeng/api';
 export class MenuComponent implements OnInit {
 
   items: MenuItem[];
-  constructor() { }
+  constructor(private miRoute: Router) { }
 
   ngOnInit() {
     this.items = [
       { 
-        label: 'Solicitar Turno',
-        icon: 'fa fa-plus'
+        label: 'Usuarios',
+        icon: 'fa fa-user',
+        items:[
+          { label: 'Ver Usuarios', icon: 'fa fa-users', command: (click) => { this.miRoute.navigate(['/admin/verUsuarios']) }},
+          { label: 'Alta de usuario', icon: 'fa fa-user-plus', command: (click) => { this.miRoute.navigate(['/admin/altaUsuario']) }}
+        ]
       },
       {
-        label: 'Mis Mascotas',
-        icon: 'fa fa-check'
+        label: 'Turnos',
+        icon: 'fa fa-check',
+        items: [
+          {label: 'Ver turnos', icon: 'fa fa-check'}
+        ]
       },
       {
-        label: 'Mis Turnos',
-        icon: 'fa fa-times'
+        label: 'Mascotas',
+        icon: 'fas fa-dove',
+        items: [
+          { label: 'Ver mascotas', icon: 'fas fa-frog'},
+          { label: 'Actualizar ficha de mascota', icon: 'fas fa-kiwi-bird'}
+        ]
       }
     ];
   }

@@ -81,7 +81,7 @@
 <div style="margin-top: 2%;">
   <p-panel header= "Mis Mascotas">
 
-      <p-table #dt [columns]="cols" [value]="cuerpoTabla" [paginator]="true" [rows]="11" selectionMode="single" [(selection)]="vehiculoSeleccionado" (onRowSelect)="onRowSelect($event)" >
+      <p-table #dt [columns]="cols" [value]="cuerpoTabla" [paginator]="true" [rows]="11" selectionMode="single" [(selection)]="mascotaSeleccionada">
 
           <ng-template pTemplate="caption">
               <div style="text-align: right">

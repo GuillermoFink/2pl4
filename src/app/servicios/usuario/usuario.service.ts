@@ -68,4 +68,12 @@ export class UsuarioService {
       return data;
     })
   }
+
+  modificarUsuario(data): Promise<any>{
+    return this.miHttp.httpPostP('modificarUsuario',data)
+    .then (data => {
+      console.log(data);
+      return data;
+    })
+  }
 }
