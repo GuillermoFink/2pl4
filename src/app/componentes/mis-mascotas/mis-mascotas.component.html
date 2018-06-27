@@ -1,1 +1,44 @@
-MASCOTAS
+<app-tabla-mis-mascotas [id_usuario]="id_usuario" (seleccion)="mascotaElegida($event)"></app-tabla-mis-mascotas>
+
+<p-dialog header="Mi Mascota" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" [width]="300">
+    <div class="ui-g ui-fluid" *ngIf="miMascota">
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="raza">Raza</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="raza" [(ngModel)]="miMascota.raza" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="color">Color</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="color" [(ngModel)]="miMascota.color" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="edad">Edad</label>
+            </div>
+            <div class="ui-g-8">
+                <input pInputText id="edad" [(ngModel)]="miMascota.edad" />
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <label for="tipo">Tipo</label>
+            </div>
+            <div class="ui-g-8">
+                <p-dropdown [options]="mascotas" [(ngModel)]="miMascota.tipo"></p-dropdown>
+            </div>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa fa-close" (click)="cancelar()" label="Cancelar"></button>
+            <button type="button" pButton icon="fa fa-check" (click)="guardar()" label="Guardar"></button>
+        </div>
+    </p-footer>
+</p-dialog>

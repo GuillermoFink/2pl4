@@ -82,4 +82,11 @@ export class MascotaService {
       return data;
     })
   }
+  modificarMascota(data): Promise<any> {
+    return this.miHttp.httpPostP('modificarMascota', data)
+    .then (data => {
+      //console.log(data);
+      return data;
+    })
+  }
 }

@@ -47,9 +47,6 @@ export class TablaMisMascotasComponent implements OnInit {
 
   onRowSelect(event) {
     this.seleccion.emit(this.mascotaSeleccionada);
-    //this.miServicioMascota.traer(this.vehiculoSeleccionado.id_chofer).then(data => {
-     // this.unChofer = data[0];
-    //});
   }
 
 }

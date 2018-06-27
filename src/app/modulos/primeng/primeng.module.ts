@@ -23,6 +23,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {ChipsModule} from 'primeng/chips';
 import {CalendarModule} from 'primeng/calendar';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CheckboxModule,
     ChipsModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DialogModule
     
   ],
   exports: [
@@ -74,7 +76,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     CheckboxModule,
     ChipsModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    DialogModule
   ],
   declarations: []
 })
