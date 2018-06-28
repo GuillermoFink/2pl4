@@ -86,7 +86,7 @@ export class SolicitarTurnoComponent implements OnInit {
     } else {
       if (this.desc == null) {
         this.miTurno.descripcion = " ";
-      }else{
+      } else {
         this.miTurno.descripcion = this.desc;
       }
       this.miTurno.estado = 1;
@@ -112,6 +112,10 @@ export class SolicitarTurnoComponent implements OnInit {
         });
     }
 
+  }
+
+  cancelarTurno() {
+    this.date1 = null
   }
 
 
