@@ -17,6 +17,9 @@ export class MisturnosComponent implements OnInit {
   cuerpoTabla: any;
   cols: any[];
   tituloTabla = "Seleccionar mascota para turno";
+  turnoSelecto: any;
+  modificarTurno: boolean = false;
+  desc: any;
   constructor(private miMascota: Mascota, private miHttp: MiHttpService, private miRouter: Router, private miServicioMascota: MascotaService, private miUsuario: UsuarioService, private servicioTurno: TurnoService) { }
 
   ngOnInit() {
@@ -37,7 +40,53 @@ export class MisturnosComponent implements OnInit {
   }
 
   onRowSelect(event){
-    console.log("SARASA");
+    console.log(this.turnoSelecto);
+    this.desc = this.turnoSelecto.descripcion;
   }
 
+  editarTurno(){
+    this.modificarTurno = true;
+  }
+  cancelarEdicion(){
+    this.modificarTurno = false;
+  }
+
+  cancelarTurno() {
+    this.turnoSelecto.estado = 3;
+    this.servicioTurno.actualizarTurno(this.turnoSelecto)
+      .then(data => {
+        if (data == 'ok') {
+          swal({
+            type: 'success',
+            title: 'Ok!',
+            text: 'Turno actualizado',
+          })
+        } else {
+          swal({
+            type: 'error',
+            title: 'Error!',
+            text: 'Error al actualizar turno',
+          })
+        }
+      })
+  }
+  actualizarTurno() {
+    this.turnoSelecto.descripcion = this.desc;
+    this.servicioTurno.actualizarTurno(this.turnoSelecto)
+      .then(data => {
+        if (data == 'ok') {
+          swal({
+            type: 'success',
+            title: 'Ok!',
+            text: 'Turno actualizado',
+          })
+        } else {
+          swal({
+            type: 'error',
+            title: 'Error!',
+            text: 'Error al actualizar turno',
+          })
+        }
+      })
+  }
 }

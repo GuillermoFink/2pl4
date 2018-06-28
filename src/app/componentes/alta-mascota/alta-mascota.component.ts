@@ -69,6 +69,7 @@ export class AltaMascotaComponent implements OnInit {
             text: 'Mascota agregada correctamente.'
           })
           this.userform.reset();
+          this.miRouter.navigate(['/cliente/mascotas']);
         } else {
           swal({
             type: 'error',

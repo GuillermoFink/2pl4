@@ -15,6 +15,8 @@ import { PrimengModule } from './modulos/primeng/primeng.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // SERVICIOS PROPIOS
+import { AdminAuthService } from './servicios/autentificacion/admin-auth.service';
+import { UserAuthService } from './servicios/autentificacion/user-auth.service';
 import { UsuarioService } from './servicios/usuario/usuario.service';
 import { MascotaService } from './servicios/mascota/mascota.service';
 import { TurnoService } from './servicios/turno/turno.service';
@@ -60,6 +62,7 @@ const config: Routes = [
   {
     path: 'cliente',
     component: ClienteComponent,
+    canActivate: [UserAuthService],
     children: [
       {
         path: 'mascotas',
@@ -82,6 +85,7 @@ const config: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AdminAuthService],
     children: [
       {
         path: 'altaUsuario',
@@ -92,18 +96,14 @@ const config: Routes = [
         component: VerUsuariosComponent
       },
       {
-        path:'verTurnos',
+        path: 'verTurnos',
         component: VerTurnosComponent
       },
       {
-        path:'verMascotas',
+        path: 'verMascotas',
         component: VerMascotasComponent
       }
     ]
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
   },
   {
     path: 'registro',
@@ -144,7 +144,7 @@ const config: Routes = [
     HttpModule,
     RouterModule.forRoot(config)
   ],
-  providers: [Usuario, Mascota, Turno,MiHttpService, UsuarioService, MascotaService,TurnoService],
+  providers: [Usuario, Mascota, Turno, MiHttpService, UsuarioService, MascotaService, TurnoService, AdminAuthService, UserAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

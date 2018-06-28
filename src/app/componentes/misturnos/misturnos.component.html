@@ -1,7 +1,7 @@
 <div style="margin-top: 2%;">
     <p-panel header= "Mis Turnos">
   
-        <p-table #dt [columns]="cols" [value]="cuerpoTabla" [paginator]="true" [rows]="5" selectionMode="single" [(selection)]="mascotaSeleccionada" (onRowSelect)="onRowSelect($event)" >
+        <p-table #dt [columns]="cols" [value]="cuerpoTabla" [paginator]="true" [rows]="5" selectionMode="single" [(selection)]="turnoSelecto" (onRowSelect)="onRowSelect($event)" >
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -28,3 +28,39 @@
   
     </p-panel>
   </div>
+
+  <div *ngIf="turnoSelecto" style="margin-top: 2%;">
+        <p-panel header="Detalle de turno">
+          <table>
+            <tr>
+              <td>Mascota:</td>
+              <td> {{turnoSelecto.raza}} </td>
+            </tr>
+            <tr>
+              <td>Fecha:</td>
+              <td> {{turnoSelecto.fecha}} </td>
+            </tr>
+            <tr>
+              <td>Descripcion:</td>
+              <td *ngIf="!modificarTurno"> {{turnoSelecto.descripcion}} </td>
+              <td *ngIf="modificarTurno">
+                <textarea pInputTextarea [(ngModel)]="desc" id="textArea"></textarea>
+              </td>
+            </tr>
+          </table>
+          <p-footer>
+            <div *ngIf="turnoSelecto.estado != 1">
+              Turno finalizado.
+            </div>
+            <button pButton type="button" icon="far fa-sticky-note" label="Editar" class="ui-button-warning" (click)="editarTurno()"
+              style="margin-right: .25em" *ngIf="turnoSelecto.estado == 1"></button>
+            <button pButton type="button" icon="fas fa-comment" label="Guardar Cambios" class="ui-button-info" style="margin-right: .25em"
+              *ngIf="modificarTurno" (click)="actualizarTurno()"></button>
+            <button pButton type="button" icon="fas fa-comment" label="Cencelar" class="ui-button-secondary" style="margin-right: .25em"
+              *ngIf="modificarTurno" (click)="cancelarEdicion()"></button>
+            <button pButton type="button" icon="fas fa-ban" label="Cancelar Turno" class="ui-button-danger" style="margin-right: .25em"
+              (click)="cancelarTurno()" *ngIf="turnoSelecto.estado == 1"></button>
+          </p-footer>
+        </p-panel>
+      
+      </div>

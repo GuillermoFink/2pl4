@@ -34,7 +34,6 @@ export class MenuComponent implements OnInit {
         icon: 'fas fa-dove',
         items: [
           { label: 'Ver mascotas', icon: 'fas fa-frog', command: (click) => { this.miRoute.navigate(['/admin/verMascotas'])}},
-          { label: 'Actualizar ficha de mascota', icon: 'fas fa-kiwi-bird'}
         ]
       }
     ];

@@ -1,17 +1,22 @@
-<div class="ui-g">
-    <div class="ui-g-3"></div>
-    <div class="ui-g-6">
-        <p-panel header="Iniciar Sesion">
-            <label>Usuario</label>
-            <input type="text" [(ngModel)]="usuario">
-            <br>
-            <label>Password</label>
-            <input type="password" [(ngModel)]="password">
-            <br>
-            <button (click)="login()">Login</button>
-            <button routerLink="/registro">Registro</button>
-        </p-panel>
+<div class="bg">
 
+
+    <div class="ui-g">
+        <div class="ui-g-3"></div>
+        <div class="ui-g-6">
+            <p-panel header="Iniciar Sesion">
+                <label>Usuario</label>
+                <input type="text" [(ngModel)]="usuario">
+                <br>
+                <label>Password</label>
+                <input type="password" [(ngModel)]="password">
+                <br>
+                <button (click)="login()">Login</button>
+                <button routerLink="/registro">Registro</button>
+            </p-panel>
+
+        </div>
+        <div class="ui-g-3"></div>
     </div>
-    <div class="ui-g-3"></div>
+
 </div>
